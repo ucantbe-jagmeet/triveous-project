@@ -15,6 +15,14 @@ const Navbar = () => {
           <Link href="/profile">Profile</Link>
         </li>
       </ul>
+      <ul className="flex">
+        <li className="p-2 cursor-pointer">
+          <Link href="/login">Login</Link>
+        </li>
+        <li className="p-2 cursor-pointer">
+          <Link href="/signup ">Signup</Link>
+        </li>
+      </ul>
     </div>
   );
 };
