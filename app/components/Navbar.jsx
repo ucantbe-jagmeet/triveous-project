@@ -3,7 +3,7 @@ import React from "react";
 import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { user } = UserAuth();
+  const { user, googleSignIn, logOut } = UserAuth();
 
   return (
     <div className="h-16 w-full border-b-2 flex items-center justify-between p-2">
