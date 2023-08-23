@@ -1,9 +1,10 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, googleSignIn, logOut } = UserAuth();
+  const [loading, setLoading] = useState(true);
   console.log(user);
   const handleSignIn = async () => {
     try {
@@ -21,6 +22,14 @@ const Navbar = () => {
     }
   };
 
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 20));
+      setLoading(false);
+    };
+    checkAuthentication();
+  }, [user]);
+
   return (
     <div className="h-16 w-full border-b-2 flex items-center justify-between p-2">
       <ul className="flex">
@@ -35,7 +44,7 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {!user ? (
+      {loading ? null : !user ? (
         <ul className="flex">
           <li onClick={handleSignIn} className="p-2 cursor-pointer">
             Login
